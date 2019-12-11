@@ -1,0 +1,17 @@
+<?php if (!$input->isHidden()): ?>
+    <div class="field-body">
+        <div class="field">
+            <div class="control">
+                <?= $input->fetch() ?>
+            </div>
+            <?php if ($input->hasError()): ?>
+                <p class="help is-danger"><?= $input->getError() ?></p>
+            <?php endif ?>
+            <?php if ($input->getDescription()): ?>
+                <p class="help"><?= $input->getDescription() ?></p>
+            <?php endif ?>
+        </div>
+    </div>
+<?php else: ?>
+    <?= $input->fetch() ?>
+<?php endif ?>
