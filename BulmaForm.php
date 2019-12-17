@@ -12,7 +12,7 @@ class BulmaForm extends Form {
         ];
     }
     
-    public function fetch($path = ':form/form') {
+    public function fetch($path = ':form/form', $params = []) {
         $inputClassMap = $this->getInputClassMap();
         foreach (array_values($this->inputs) as $input) {
             $class = get_class($input);
@@ -23,7 +23,7 @@ class BulmaForm extends Form {
                 $input->addClass('is-danger');
             }
         }
-        return parent::fetch($path);
+        return parent::fetch($path, $params);
     }    
     
     

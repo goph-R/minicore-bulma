@@ -1,6 +1,8 @@
 <?php if (!$input->isHidden()): ?>
+    <?php if ($input->hasRowBegin()): ?>
     <div class="field-body">
-        <div class="field">
+        <div class="field<?= !$input->hasRowEnd() ? ' has-addons' : '' ?>">
+    <?php endif ?>
             <div class="control">
                 <?= $input->fetch() ?>
             </div>
@@ -10,8 +12,10 @@
             <?php if ($input->getDescription()): ?>
                 <p class="help"><?= $input->getDescription() ?></p>
             <?php endif ?>
+    <?php if ($input->hasRowEnd()): ?>
         </div>
     </div>
+    <?php endif ?>
 <?php else: ?>
     <?= $input->fetch() ?>
 <?php endif ?>

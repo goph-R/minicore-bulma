@@ -1,3 +1,6 @@
-<?php if (!$input->isHidden()): ?><div class="field is-horizontal"><?= $this->fetch(':form/label', ['input' => $input]) ?><?php endif ?>
+<?php if (!$input->isHidden() && $input->hasRowBegin()): ?>
+<div class="field is-horizontal">
+    <?= $this->fetch(':form/label', ['input' => $input]) ?>
+<?php endif ?>
 <?= $this->fetch(':form/input', ['input' => $input]) ?>
-<?= !$input->isHidden() ? "</div>" : "" ?>
+<?= !$input->isHidden() && $input->hasRowEnd() ? "</div>" : "" ?>
