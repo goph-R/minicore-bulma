@@ -14,6 +14,7 @@ class BulmaModule extends Module {
     public function __construct(Framework $framework) {
         parent::__construct($framework);
         $framework->changeClass('Form', 'BulmaForm');
+        $framework->changeClass('SelectInput', 'BulmaSelectInput');
         $this->framework = $framework;
     }
     

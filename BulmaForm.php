@@ -23,6 +23,7 @@ class BulmaForm extends Form {
                 $input->addClass('is-danger');
             }
         }
+        
         return parent::fetch($path, $params);
     }    
     
