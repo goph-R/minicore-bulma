@@ -15,6 +15,7 @@ class BulmaModule extends Module {
         parent::__construct($framework);
         $framework->changeClass('Form', 'BulmaForm');
         $framework->changeClass('SelectInput', 'BulmaSelectInput');
+        $framework->changeClass('FileInput', 'BulmaFileInput');
         $this->framework = $framework;
     }
     
@@ -23,6 +24,9 @@ class BulmaModule extends Module {
         $router = $this->framework->get('router');
         /** @var View $view */
         $view = $this->framework->get('view');
+        /** @var Translation $translation */
+        $translation = $this->framework->get('translation');
+        $translation->add('bulma', 'modules/minicore-bulma/translation');
         /** @var Config $config */
         $config = $this->framework->get('config');
         $view->addStyle($config->get(self::CONFIG_FONTAWESOME_URL, self::DEFAULT_FONTAWESOME_URL));
