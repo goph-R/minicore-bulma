@@ -7,28 +7,26 @@ class BulmaModule extends Module {
     const CONFIG_URL = 'bulma.url';
     const DEFAULT_URL = 'https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css';
 
-    /** @var Framework */
-    protected $framework;
     protected $id = 'minicore-bulma';
 
-    public function __construct(Framework $framework) {
-        parent::__construct($framework);
+    public function __construct() {
+        $framework = Framework::instance();
         $framework->changeClass('Form', 'BulmaForm');
         $framework->changeClass('SelectInput', 'BulmaSelectInput');
         $framework->changeClass('FileInput', 'BulmaFileInput');
-        $this->framework = $framework;
     }
     
     public function init() {
+        $framework = Framework::instance();
         /** @var Router $router */
-        $router = $this->framework->get('router');
+        $router = $framework->get('router');
         /** @var View $view */
-        $view = $this->framework->get('view');
+        $view = $framework->get('view');
         /** @var Translation $translation */
-        $translation = $this->framework->get('translation');
+        $translation = $framework->get('translation');
         $translation->add('bulma', 'modules/minicore-bulma/translation');
         /** @var Config $config */
-        $config = $this->framework->get('config');
+        $config = $framework->get('config');
         $view->addStyle($config->get(self::CONFIG_FONTAWESOME_URL, self::DEFAULT_FONTAWESOME_URL));
         $view->addStyle($config->get(self::CONFIG_URL, self::DEFAULT_URL));
         $view->addFolder(':form', 'modules/minicore-bulma/templates/form');
