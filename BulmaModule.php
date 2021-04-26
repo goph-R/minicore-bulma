@@ -17,6 +17,7 @@ class BulmaModule extends Module {
     }
     
     public function init() {
+        parent::init();
         $framework = Framework::instance();
         /** @var Router $router */
         $router = $framework->get('router');
