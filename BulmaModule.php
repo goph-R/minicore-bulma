@@ -20,17 +20,17 @@ class BulmaModule extends Module {
         parent::init();
         $framework = Framework::instance();
         /** @var Router $router */
-        $router = $framework->get('router');
+        //$router = $framework->get('router');
         /** @var View $view */
         $view = $framework->get('view');
         /** @var Translation $translation */
         $translation = $framework->get('translation');
-        $translation->add('bulma', 'modules/minicore-bulma/translation');
+        $translation->add('bulma', $this->getFolder().'translation');
         /** @var Config $config */
         $config = $framework->get('config');
         $view->addStyle($config->get(self::CONFIG_FONTAWESOME_URL, self::DEFAULT_FONTAWESOME_URL));
         $view->addStyle($config->get(self::CONFIG_URL, self::DEFAULT_URL));
-        $view->addFolder(':form', 'modules/minicore-bulma/templates/form');
+        $view->addFolder(':form', $this->getFolder().'templates/form');
     }
 
 }
